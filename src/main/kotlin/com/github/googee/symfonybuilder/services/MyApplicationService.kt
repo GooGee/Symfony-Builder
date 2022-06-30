@@ -1,6 +1,6 @@
-package org.jetbrains.plugins.template.services
+package com.github.googee.symfonybuilder.services
 
-import org.jetbrains.plugins.template.MyBundle
+import com.github.googee.symfonybuilder.MyBundle
 
 class MyApplicationService {
 
