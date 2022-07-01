@@ -3,6 +3,8 @@ package com.github.googee.symfonybuilder.file
 import com.google.common.io.CharStreams
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.LocalFileSystem
+import com.intellij.openapi.vfs.VirtualFile
+import com.intellij.openapi.vfs.VirtualFileManager
 import java.io.File
 import java.io.FileInputStream
 import java.io.InputStreamReader
@@ -18,6 +20,10 @@ class FileManager(val project: Project) {
 
         fun getFullPath(file: String, project: Project): String {
             return project.basePath + File.separator + file
+        }
+
+        fun getVF(file: String): VirtualFile? {
+            return VirtualFileManager.getInstance().refreshAndFindFileByNioPath(Paths.get(file))
         }
 
         fun isFile(file: String): Boolean {
@@ -56,6 +62,7 @@ class FileManager(val project: Project) {
             Files.createDirectories(path.parent)
             val writer = PrintWriter(path.toString())
             writer.print(text)
+            writer.flush()
             writer.close()
             LocalFileSystem.getInstance().refreshAndFindFileByPath(file)
         }

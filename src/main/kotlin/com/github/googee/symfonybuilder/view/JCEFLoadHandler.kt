@@ -1,12 +1,13 @@
 package com.github.googee.symfonybuilder.view
 
+import com.github.googee.symfonybuilder.bridge.CodeFactory
 import com.github.googee.symfonybuilder.file.Site
 import org.cef.browser.CefBrowser
 import org.cef.browser.CefFrame
 import org.cef.handler.CefLoadHandler
 import org.cef.network.CefRequest
 
-class JCEFLoadHandler(val view: BuilderView) : CefLoadHandler {
+class JCEFLoadHandler(val view: BuilderView, val cf: CodeFactory) : CefLoadHandler {
 
     override fun onLoadStart(p0: CefBrowser?, p1: CefFrame?, p2: CefRequest.TransitionType?) {
     }
@@ -28,6 +29,7 @@ class JCEFLoadHandler(val view: BuilderView) : CefLoadHandler {
         println("HTTP status: $httpStatusCode")
         if (httpStatusCode == 200) {
             view.showWeb()
+            cf.inject()
         }
     }
 }
