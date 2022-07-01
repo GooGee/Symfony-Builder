@@ -13,7 +13,7 @@ class Start {
 
         fun run(project: Project): BuilderView {
             val fm = FileManager(project)
-            val uri = Site.getURI(fm) + "?ide=idea&plugin=" + Constant.Title
+            val uri = Site.getFullURI(fm)
             val browser = BrowserFactory.make(uri)
             val view = BuilderView(browser)
             val handler = JCEFLoadHandler(view)
