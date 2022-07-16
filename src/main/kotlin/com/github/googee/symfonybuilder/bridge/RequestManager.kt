@@ -6,8 +6,8 @@ import com.intellij.openapi.project.Project
 
 class RequestManager(fm: FileManager, project: Project) {
 
-    private val open: Open
     private val edit: Edit
+    private val open: Open
 
     init {
         edit = Edit(project)
@@ -20,6 +20,9 @@ class RequestManager(fm: FileManager, project: Project) {
         }
         if (request.action == open.action.name) {
             return open.run(request)
+        }
+        if (request.action == Refresh.action.name) {
+            return Refresh.run();
         }
         return Response.error(request.action, request.key, "", ErrorMessage.ActionNotFound)
     }
