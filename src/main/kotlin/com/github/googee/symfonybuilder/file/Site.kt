@@ -8,7 +8,7 @@ class Site {
 
         const val Key = "URI"
         const val Server = "Server"
-        const val URI = "https://googee.github.io/Code-Diagram-Page"
+        const val URI = "https://googee.github.io/Symfony-Builder-Page"
 
         fun getURI(fm: FileManager): String {
             val file = fm.getBuilderFile(Key)

@@ -16,7 +16,7 @@ class FileManager(val project: Project) {
 
     companion object {
 
-        const val FolderName = "code-diagram"
+        const val FolderName = "symfony-builder"
 
         fun getFullPath(file: String, project: Project): String {
             return project.basePath + File.separator + file
